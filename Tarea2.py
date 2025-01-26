@@ -65,14 +65,13 @@ def menu():
         Productos()
     elif opcion=="7":
         print("Vuelva pronto")
-        break
     else:
         print("Opcion no valida") 
 
 # 2. Mostrar el listado de ventas => puedes usar print(f"")
 def Mostar_Ventas():
     for venta in ventas:
-        print(f"Fecha: {ventas["fecha"]}, Producto: {ventas["producto"]}, Cantidad: {ventas["cantidad"]}, Precio: {ventas["precio"]}, Promocion: {ventas["promocion"]}")
+        print(f"Fecha: {venta["fecha"]}, Producto: {venta["producto"]}, Cantidad: {venta["cantidad"]}, Precio: {venta["precio"]}, Promocion: {venta["promocion"]}")
 
 # 3. Añadir un producto
 def Nuevo_Producto():
@@ -80,8 +79,8 @@ def Nuevo_Producto():
     producto=input("Ingresar producto (Producto_Letra): ")
     cantidad=input("Ingresar la cantidad: ")
     precio=float(input("Ingresar precio: "))
-    promocion=input("¿Esta en promocion?si/no: ").lower==si
-    nuevo[
+    promocion=input("¿Esta en promocion?si/no: ").strip().lower()=="si"
+    nuevo=[
         {
             "fecha":fecha,
             "producto":producto,
@@ -90,9 +89,9 @@ def Nuevo_Producto():
             "promocion":promocion
         }
     ]
-ventas.append(nuevo)
-print("Producto añadido de manera satisfactoria")
-print("Las ventas son: ",ventas)
+    ventas.append(nuevo)
+    print("Producto añadido de manera satisfactoria")
+    print("Las ventas son: ",ventas)
 
 # 4. Calcular la suma total de las ventas
 def Suma_Total ():
@@ -111,14 +110,23 @@ def Prom_Ventas():
     if contador>0:
         print("El promedio es: ", suma/contador)
     else:
-        print("No se realizaron ventas")
+        print("No hay ventas realizadas")
         
 # 6. Mostar el producto mas unidades vendidas
 def Mas_Vendido():
-    for cant in ventas:
+    max_cantidad = 0
+    producto_max = ""
+    for venta in ventas:
+        if venta["cantidad"] > max_cantidad:
+            max_cantidad = venta["cantidad"]
+            producto_max = venta["producto"]
+    print(f"El producto más vendido es: {producto_max} con {max_cantidad} unidades.")
+
         
 # 7. Mostrar el listado de productos
 def Productos():
     for prod in ventas:
-        prod=ventas["producto"]
-        print(f"El listado de productos es: {"producto"}")
+        print(f"Los productos son: {prod["productos"]}")
+# Llamada al menú principal
+menu()
+
