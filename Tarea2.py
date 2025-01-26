@@ -41,7 +41,7 @@ ventas=[
 # 1. CREA UN MENU ITERACTIVO QUE CUENTE CON LOS SIGUIENTES OPCIONES
 def menu():
     print("El menu de opciones es el siguiente: ")
-    print("\n--- Menú de Ventas ---")
+    print("\n... Menú de Ventas ...")
     print("1. Mostrar el listado de ventas")
     print("2. Añadir un producto")
     print("3. Calcular la suma total de las ventas")
@@ -98,7 +98,7 @@ def Suma_Total ():
     suma=0
     for venta in ventas:
         suma+=venta["cantidad"]*venta["precio"]
-        print("La suma de las ventas es ",suma)
+    print("La suma de las ventas es ",suma)
 
 # 5. Calcular el promedio de ventas
 def Prom_Ventas():
